@@ -7,15 +7,15 @@
     <title>Pomodoro</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="main()">
     <div class="main">
         <div class="aside-diario">Pomodoros realizados hoje: </div>
         <div class="content">
             <div class="cronometro"><div class="min">25</div><div class="sec">00</div></div>
             <div class="options">
-                <div onclick="regressiva()" class="botao" id="iniciar">Iniciar Cronômetro</div>
-                <div onclick="pausa()" class="botao" id="intervalo">Modo Intervalo</div>
-                <div onclick="descansar()" class="descanso">Talvez você precise de um descanso, tire um tempinho pra você de 10 minutos, você merece :)</div>
+                <div class="botao" id="iniciar">Iniciar Cronômetro</div>
+                <div class="botao" id="intervalo">Modo Intervalo</div>
+                <div class="descanso">Talvez você precise de um descanso, tire um tempinho pra você de 10 minutos, você merece :)</div>
             </div>
         </div>
     </div>
