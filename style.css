@@ -4,14 +4,76 @@ body{
 }
 
 .main{
+    color: white;
     height: 900px;
     width: 100%;
     display: grid;
     grid-template-columns: 20% 80%;
+    background-color: rgb(34, 34, 34);
+}
+
+.cronometro{
+    font-size: 70pt;
+    margin-bottom: 40px;
+    display: flex;
+}
+
+.min::after{
+    margin-left: 2px;
+    margin-right: 2px;
+    content: ":";
+    animation: pisca 1s 0s infinite;
+}
+
+@keyframes pisca{
+    0%,100%{opacity: 1;}
+    50%{opacity: 0;}
 }
 
 .aside-diario{
+    padding: 20px;
+    font-size: 14pt;
+    text-align: center;
 }
 
 .content{
+    font-size: 20px;
+    margin-left: 275px;
+    margin-top: 100px;
 }   
+
+.options{
+    width: 220px;
+    text-align: center;
+    user-select: none;
+    padding-top: 10px;
+    font-size: 20pt;
+}
+
+.botao{
+    border: 1px solid springgreen;
+    padding: 6px;
+    margin-bottom: 15px;
+    border-radius: 50px;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.botao:hover{
+    cursor: pointer;
+    background-color: springgreen;
+}
+
+.descanso{
+    margin-top: 150px;
+    color: rgb(255, 103, 242);
+    text-decoration: underline;
+    display: block;
+    font-size: 15pt;
+    width: 250px;
+    text-align: center;
+}
+.descanso:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
