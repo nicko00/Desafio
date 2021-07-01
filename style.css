@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    overflow: hidden;
+}
+
+.main{
+    height: 900px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.aside-diario{
+}
+
+.content{
+}   
