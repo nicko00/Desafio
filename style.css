@@ -33,7 +33,7 @@ body{
 .aside-diario{
     padding: 20px;
     font-size: 14pt;
-    text-align: center;
+    background-color: rgb(44, 44, 44);
 }
 
 .content{
