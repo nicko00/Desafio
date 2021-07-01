@@ -8,6 +8,7 @@ var inicio = document.getElementById('iniciar')
 var intervalo = document.getElementById('intervalo')
 var descanso =  document.getElementsByClassName('descanso')[0]
 var som = new Audio("beep.mp3")
+var desc = 0 //apenas para que o aviso de descanso não seja exibido várias vezes
 
 contagem.innerHTML = cont
 
@@ -17,20 +18,22 @@ function main(){
     descanso.addEventListener("click", descansar)
 }
 
-function regressiva(){
+function regressiva(){ //todas as funções retornam para essa que faz a cronometragem de tempo
     inicio.innerHTML = 'Reiniciar'
     inicio.removeEventListener("click", regressiva)
     inicio.addEventListener("click", reinicio)
-    if(min > 0 || sec > 0){
+    if (min == 25) cont++ //verifica se é uma tarefa (25min) ou não, para não adicionar um descanso ou intervalo como +1 pomodoro.
+
+    if(min > 0 || sec > 0){//back-end do cronômetro
         if(sec == 0){
             sec = 59
-            min -= 1
+            min--
         }
         else{
-            sec -= 1
+            sec--
         }
         
-        cronometragem = setTimeout(function(){
+        cronometragem = setTimeout(function(){//front-end do cronômetro
             if (min > 9){
                 document.getElementsByClassName('min')[0].innerHTML = min
             }else{document.getElementsByClassName('min')[0].innerHTML = '0'+min}
@@ -39,13 +42,13 @@ function regressiva(){
             }else{document.getElementsByClassName('sec')[0].innerHTML = '0'+sec}
 
             regressiva()
-        }, 1000)
+        }, 1)
     } else{
         document.getElementsByClassName('min')[0].innerHTML = '0'+0
-        document.getElementsByClassName('sec')[0].innerHTML = '0'+0
-        som.play()
-        cont += 1
-        contagem.innerHTML = cont
+        document.getElementsByClassName('sec')[0].innerHTML = '0'+0 // quando acabar a contagem, tudo vai se tornar 00 e não uma div vazia 
+        som.play() //som de beep
+        contagem.innerHTML = cont //apenas depois de verificar se é tarefa e do cronômetro chegar a 0, será +1 pomodoro
+        if (cont == 4 && desc == 0) descanso.style.display = 'block' //aparecer aviso de descanso depois de 4 pomodoros
     }
 }
 
@@ -54,10 +57,10 @@ function reinicio(){
     sec = 0
     document.getElementsByClassName('min')[0].innerHTML = 25
     document.getElementsByClassName('sec')[0].innerHTML = "0"+0
-    clearTimeout(cronometragem)
+    clearTimeout(cronometragem) // para voltar para o minuto 25 e ele não comece a contagem sozinho devido ao setTimeout na regressiva()
     inicio.innerHTML = 'Iniciar Cronômetro'
-    inicio.addEventListener("click", regressiva)
     inicio.removeEventListener("click", reinicio)
+    inicio.addEventListener("click", regressiva)
 }
 
 function pausa(){
@@ -65,7 +68,21 @@ function pausa(){
     document.getElementsByClassName('sec')[0].innerHTML = '00'
     min = 5
     sec = 0
+    inicio.innerHTML = 'Iniciar Cronômetro'
+    inicio.removeEventListener("click", reinicio)
+    inicio.addEventListener("click", regressiva) //remove e add listeners para quando clicar em iniciar cronômetro os minutos não voltarem para 25
 }
 
 function descansar(){
+    min = 10
+    sec = 0
+    desc++
+    document.getElementsByClassName('min')[0].innerHTML = 10
+    document.getElementsByClassName('sec')[0].innerHTML = "0"+0
+    inicio.removeEventListener('click', reinicio)
+    inicio.addEventListener('click', regressiva)
+    inicio.innerHTML = 'Iniciar Cronômetro'
+    descanso.innerHTML = 'Aproveite o descanso e boa sorte nas tarefas :)'
+    setTimeout(function(){
+        descanso.style.display = 'none'}, 4000) //tempo para ler a mensagem que foi mudada antes do aviso não aparecer mais
 }
