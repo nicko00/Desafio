@@ -33,7 +33,7 @@ body{
 
 .aside-diario{
     padding: 20px;
-    font-size: 14pt;
+    font-size: 12pt;
     background-color: rgb(44, 44, 44);
 }
 
@@ -73,6 +73,7 @@ body{
     font-size: 15pt;
     width: 250px;
     text-align: center;
+    display: none;
 }
 .descanso:hover{
     cursor: pointer;

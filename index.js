@@ -2,13 +2,14 @@ var minDOM = document.getElementsByClassName('min')[0].innerHTML
 var secDOM = document.getElementsByClassName('sec')[0].innerHTML
 var min = parseInt(minDOM)
 var sec = parseInt(secDOM)
-var contagem = document.getElementsByClassName('aside-diario')[0]
+var contagem = document.getElementById('contagem')
 var cont = 0
 var inicio = document.getElementById('iniciar')
 var intervalo = document.getElementById('intervalo')
 var descanso =  document.getElementsByClassName('descanso')[0]
+var som = new Audio("beep.mp3")
 
-contagem.innerHTML += cont
+contagem.innerHTML = cont
 
 function main(){
     inicio.addEventListener("click", regressiva)
@@ -42,8 +43,9 @@ function regressiva(){
     } else{
         document.getElementsByClassName('min')[0].innerHTML = '0'+0
         document.getElementsByClassName('sec')[0].innerHTML = '0'+0
-        //audio
-        //cont += 1
+        som.play()
+        cont += 1
+        contagem.innerHTML = cont
     }
 }
 
