@@ -16,6 +16,7 @@ body{
     font-size: 70pt;
     margin-bottom: 40px;
     display: flex;
+    user-select: none;
 }
 
 .min::after{
