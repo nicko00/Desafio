@@ -42,7 +42,7 @@ function regressiva(){ //todas as funções retornam para essa que faz a cronome
             }else{document.getElementsByClassName('sec')[0].innerHTML = '0'+sec}
 
             regressiva()
-        }, 1)
+        }, 1000)
     } else{
         document.getElementsByClassName('min')[0].innerHTML = '0'+0
         document.getElementsByClassName('sec')[0].innerHTML = '0'+0 // quando acabar a contagem, tudo vai se tornar 00 e não uma div vazia 
@@ -82,7 +82,5 @@ function descansar(){
     inicio.removeEventListener('click', reinicio)
     inicio.addEventListener('click', regressiva)
     inicio.innerHTML = 'Iniciar Cronômetro'
-    descanso.innerHTML = 'Aproveite o descanso e boa sorte nas tarefas :)'
-    setTimeout(function(){
-        descanso.style.display = 'none'}, 4000) //tempo para ler a mensagem que foi mudada antes do aviso não aparecer mais
+        descanso.style.display = 'none'//a mensagem não aparecerá mais
 }
