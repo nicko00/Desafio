@@ -1,2 +1,3 @@
-# Desafio
- Arquivos .html .css e .js
+# Pomodoro Site
+
+Site básico com HTML, CSS e Javascript para organização de tarefas e tempo para realizá-las.
