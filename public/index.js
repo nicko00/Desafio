@@ -18,6 +18,7 @@ function main(){
     descanso.addEventListener("click", descansar)
 }
 
+
 function regressiva(){ //todas as funções retornam para essa que faz a cronometragem de tempo
     inicio.innerHTML = 'Reiniciar'
     inicio.removeEventListener("click", regressiva)
